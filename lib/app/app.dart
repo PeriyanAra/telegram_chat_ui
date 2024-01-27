@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobile_app_foundation/app/app_bootstrapper.dart';
-import 'package:flutter_mobile_app_foundation/presentation/home/home_screen.dart';
 import 'package:flutter_mobile_app_foundation/theming/index.dart';
 
 class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   State<App> createState() => _AppState();
@@ -23,7 +22,7 @@ class _AppState extends State<App> {
     return MaterialApp(
       theme: appTheme,
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      home: const SizedBox(),
     );
   }
 }

@@ -7,8 +7,8 @@ class DomainLayerBootstrapper extends ServiceLocator {
   DomainLayerBootstrapper._();
 
   Future<void> initialize() async {
-    registerLazySingleton<HomeUseCase>(
-      () => HomeUseCase(homeRepository: get()),
+    registerLazySingleton<ChatUseCase>(
+      () => ChatUseCase(chatRepository: get()),
     );
   }
 }
