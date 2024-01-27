@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 
-import 'package:data/src/database/database_constants.dart';
 import 'package:data/src/chat/dto/message_dto.dart';
+import 'package:data/src/database/database_constants.dart';
 import 'package:domain/domain_layer.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -62,7 +62,7 @@ class ChatLocalDataSource {
       );
 
       return Future.value(
-         Result.success(
+        Result.success(
           messageDto,
         ),
       );

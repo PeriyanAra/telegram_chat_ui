@@ -1,16 +1,22 @@
+import 'package:domain/domain_layer.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_mobile_app_foundation/presentation/chat/enums/user_activity_status.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_mobile_app_foundation/presentation/chat/mocks/chat_screen_mock_view_model.dart';
 import 'package:flutter_mobile_app_foundation/presentation/chat/view_models/chat_message_view_model.dart';
 import 'package:flutter_mobile_app_foundation/presentation/chat/view_models/chat_screen_view_model.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
+part 'chat_screen_bloc.freezed.dart';
 part 'chat_screen_event.dart';
 part 'chat_screen_state.dart';
-part 'chat_screen_bloc.freezed.dart';
 
 class ChatScreenBloc extends Bloc<ChatScreenEvent, ChatScreenState> {
-  ChatScreenBloc()
-      : super(
+  final ChatUseCase _chatUseCase;
+
+  ChatScreenBloc({
+    required ChatUseCase chatUseCase,
+  })  : _chatUseCase = chatUseCase,
+        super(
           const ChatScreenState.loading(),
         ) {
     on<ChatScreenGetDataEvent>(_handleChatScreenGetDataEvent);
@@ -19,11 +25,41 @@ class ChatScreenBloc extends Bloc<ChatScreenEvent, ChatScreenState> {
     on<ChatScreenLikeMessageEvent>(_handleChatScreenLikeMessageEvent);
   }
 
-  void _handleChatScreenGetDataEvent(
+  Future<void> _handleChatScreenGetDataEvent(
     ChatScreenGetDataEvent event,
     Emitter<ChatScreenState> emit,
-  ) {
-    emit(ChatScreenState.loaded(viewModel: chatScreenMockViewModel));
+  ) async {
+    final response = await _chatUseCase.fetchData();
+
+    response.when(
+      success: (data) {
+        final messages = data.map(ChatMessageViewModel.fromEntity).toList();
+
+        emit(
+          ChatScreenState.loaded(
+            viewModel: ChatScreenViewModel(
+              chatTitle: chatScreenMockViewModel.sender.firstName,
+              sender: chatScreenMockViewModel.sender,
+              activityStatus: UserActivityStatus.online,
+              messages: messages,
+            ),
+          ),
+        );
+      },
+      failure: (error) {
+        emit(
+          ChatScreenState.error(
+            errorMessage: error.debugMessage,
+            viewModel: ChatScreenViewModel(
+              chatTitle: chatScreenMockViewModel.sender.firstName,
+              sender: chatScreenMockViewModel.sender,
+              activityStatus: UserActivityStatus.online,
+              messages: [],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   void _handleChatScreenSendMessageEvent(
@@ -31,6 +67,8 @@ class ChatScreenBloc extends Bloc<ChatScreenEvent, ChatScreenState> {
     Emitter<ChatScreenState> emit,
   ) {
     if (state is! ChatScreenLoadedState) return;
+
+    _chatUseCase.sendMessage(message: event.message.message);
 
     final currentState = state as ChatScreenLoadedState;
     final currentMessages = List.of(currentState.viewModel.messages);
@@ -51,6 +89,8 @@ class ChatScreenBloc extends Bloc<ChatScreenEvent, ChatScreenState> {
     Emitter<ChatScreenState> emit,
   ) {
     if (state is! ChatScreenLoadedState) return;
+
+    _chatUseCase.deleteMessage(messageId: event.message.id);
 
     final currentState = state as ChatScreenLoadedState;
     final currentMessages = List.of(currentState.viewModel.messages);
