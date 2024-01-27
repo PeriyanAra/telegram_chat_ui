@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobile_app_foundation/presentation/chat/widgets/chat_text_field.dart';
+import 'package:flutter_mobile_app_foundation/theming/index.dart';
 
 class ChatBottomField extends StatefulWidget {
   const ChatBottomField({
@@ -34,9 +35,9 @@ class _ChatBottomFieldState extends State<ChatBottomField> {
         mediaQuery.padding.bottom == 0 ? 24.0 : mediaQuery.padding.bottom,
       ),
       decoration: const BoxDecoration(
-        color: Colors.black87,
+        color: black87,
         border: Border(
-          top: BorderSide(color: Colors.grey),
+          top: BorderSide(color: grey),
         ),
       ),
       child: Padding(
@@ -46,7 +47,7 @@ class _ChatBottomFieldState extends State<ChatBottomField> {
           children: [
             const Icon(
               Icons.attach_file,
-              color: Colors.grey,
+              color: grey,
             ),
             const SizedBox(
               width: 10.0,
@@ -54,6 +55,8 @@ class _ChatBottomFieldState extends State<ChatBottomField> {
             Expanded(
               child: ChatTextField(
                 textEditingController: _controller,
+                onEmojiIconTap: () {},
+                onStickerIconTap: () {},
               ),
             ),
             const SizedBox(
@@ -64,15 +67,17 @@ class _ChatBottomFieldState extends State<ChatBottomField> {
                     height: 30,
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.purple),
+                      shape: BoxShape.circle,
+                      color: purple,
+                    ),
                     child: const Icon(
                       Icons.arrow_upward,
-                      color: Colors.white,
+                      color: white,
                     ),
                   )
                 : const Icon(
                     Icons.mic_none_outlined,
-                    color: Colors.grey,
+                    color: grey,
                   ),
           ],
         ),
