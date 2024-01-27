@@ -62,7 +62,7 @@ class ChatLocalDataSource {
       );
 
       return Future.value(
-         Result.success(
+        Result.success(
           messageDto,
         ),
       );
@@ -114,7 +114,7 @@ class ChatLocalDataSource {
   Future<Result<List<MessageDto>, FailureResult>> fetchData() async {
     try {
       final response = await _database.rawQuery(
-        'SELECT * FROM ${DatabaseConstants.chatIdColumnName}',
+        'SELECT * FROM ${DatabaseConstants.chatTableName}',
       );
 
       if (response.isNotEmpty) {

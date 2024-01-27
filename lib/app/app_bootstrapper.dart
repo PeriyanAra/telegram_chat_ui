@@ -25,7 +25,9 @@ class AppBootstrapper extends ServiceLocator {
       await DataLayerBootstrapper.instance.initialize();
 
       registerLazySingleton<ChatScreenBloc>(
-        () => ChatScreenBloc(),
+        () => ChatScreenBloc(
+          chatUseCase: get(),
+        ),
       );
 
       _isInitialized.value = true;
