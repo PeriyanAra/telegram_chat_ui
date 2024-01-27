@@ -1,4 +1,4 @@
-import 'package:domain/src/index.dart';
+import 'package:domain/domain_layer.dart';
 import 'package:shared/shared.dart';
 
 class DomainLayerBootstrapper extends ServiceLocator {
