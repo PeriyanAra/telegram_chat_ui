@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:data/data_layer.dart';
 import 'package:domain/domain_layer.dart';
-import 'package:flutter_mobile_app_foundation/presentation/home/home_bloc/home_bloc.dart';
+import 'package:flutter_mobile_app_foundation/presentation/chat/bloc/chat_screen_bloc.dart';
 import 'package:rxdart/subjects.dart';
 import 'package:shared/shared.dart';
 
@@ -24,8 +24,8 @@ class AppBootstrapper extends ServiceLocator {
       await DomainLayerBootstrapper.instance.initialize();
       await DataLayerBootstrapper.instance.initialize();
 
-      registerLazySingleton<HomeBloc>(
-        () => HomeBloc(homeUseCase: get()),
+      registerLazySingleton<ChatScreenBloc>(
+        () => ChatScreenBloc(),
       );
 
       _isInitialized.value = true;
