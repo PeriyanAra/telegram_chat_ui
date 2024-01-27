@@ -40,7 +40,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
       cursorColor: blue,
       style: const TextStyle(
         fontSize: 15.0,
-        color: white,
+        color: black,
       ),
       decoration: InputDecoration(
         filled: true,
@@ -49,7 +49,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
           color: grey,
         ),
         isDense: true,
-        fillColor: black,
+        fillColor: white,
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 8, vertical: 8.0),
         errorBorder: inputBorder,

@@ -5,6 +5,7 @@ const Color transparent = Color(0x00000000);
 
 //basic colors
 const Color white = Color(0xFFFFFFFF);
+const Color white30 = Color(0xFFDAC3C3);
 const Color black = Color(0xFF000000);
 const Color black87 = Color(0xDD000000);
 const Color blue = Color(0xFF2196F3);
