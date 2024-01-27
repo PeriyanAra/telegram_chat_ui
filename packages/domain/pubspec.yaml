@@ -18,7 +18,7 @@ dependencies:
 dev_dependencies:
   analyzer_rules:
     path: ../analyzer_rules
-  build_runner: ^2.1.11
+  build_runner: ^2.2.0
   flutter_test:
     sdk: flutter
   freezed: ^2.0.4

@@ -13,8 +13,6 @@ dependencies:
     sdk: flutter
   get_it: ^7.2.0
 
-  loggy: ^2.0.1+1
-
 dev_dependencies:
   analyzer_rules:
     path: ../analyzer_rules

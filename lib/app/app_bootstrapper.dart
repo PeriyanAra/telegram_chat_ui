@@ -23,8 +23,7 @@ class AppBootstrapper extends ServiceLocator {
       await DomainLayerBootstrapper.instance.initialize();
       await DataLayerBootstrapper.instance.initialize();
 
-      
-
+     
       _isInitialized.value = true;
     } on Object catch (e) {
       log('AppBootstrapper error: ${e.toString()}');
