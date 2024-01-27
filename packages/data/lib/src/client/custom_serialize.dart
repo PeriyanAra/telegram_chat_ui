@@ -1,11 +1,9 @@
 import 'dart:developer';
 
 import 'package:chopper/chopper.dart';
-import 'package:data/src/home/dto/home_data_dto.dart';
 
 final jsonDecoderMappings = <Map<Object, _JsonFactory<Object?>>>[
   {
-    HomeDataDto: HomeDataDto.fromJson,
   },
 ];
 
