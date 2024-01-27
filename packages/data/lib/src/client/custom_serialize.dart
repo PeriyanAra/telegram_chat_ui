@@ -16,14 +16,14 @@ class JsonSerializableConverter extends JsonConverter {
   JsonSerializableConverter._();
 
   @override
-  Response<ResultType> convertResponse<ResultType, Item>(
+  Future<Response<ResultType>> convertResponse<ResultType, Item>(
     Response<dynamic> response,
-  ) {
+  ) async {
     if (response.bodyString.isEmpty) {
       return Response(response.base, null, error: response.error);
     }
 
-    final jsonRes = super.convertResponse<Object, Item>(response);
+    final jsonRes = await super.convertResponse<Object, Item>(response);
 
     return jsonRes.copyWith<ResultType>(
       body: jsonDecoder.decode<Item>(jsonRes.body) as ResultType,

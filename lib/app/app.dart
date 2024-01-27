@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobile_app_foundation/app/app_bootstrapper.dart';
-import 'package:flutter_mobile_app_foundation/router/app_router.dart';
+import 'package:flutter_mobile_app_foundation/presentation/home/home_screen.dart';
 import 'package:flutter_mobile_app_foundation/theming/index.dart';
 
 class App extends StatefulWidget {
@@ -18,15 +18,12 @@ class _AppState extends State<App> {
     AppBootstrapper.instance.initialize();
   }
 
-  final _appRouter = AppRouter();
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
+    return MaterialApp(
       theme: appTheme,
       debugShowCheckedModeBanner: false,
+      home: const HomeScreen(),
     );
   }
 }

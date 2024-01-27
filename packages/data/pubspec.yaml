@@ -4,10 +4,10 @@ publish_to: none
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.5 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  chopper: ^4.0.6
+  chopper: ^7.1.0+1
   connectivity_plus: ^2.3.5
   domain:
     path: ../domain
@@ -24,7 +24,7 @@ dev_dependencies:
   analyzer_rules:
     path: ../analyzer_rules
   build_runner: ^2.1.11
-  chopper_generator: ^4.0.6
+  chopper_generator: ^7.1.1
   flutter_test:
     sdk: flutter
   freezed: ^2.0.4

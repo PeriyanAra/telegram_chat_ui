@@ -12,6 +12,6 @@
     "dart.flutterSdkPaths": [
         "/Users/usr/fvm/versions"
     ],
-    "dart.flutterSdkPath": "/Users/usr/fvm/versions/3.0.4",
+    "dart.flutterSdkPath": "/Users/usr/fvm/versions/3.16.7",
     "build-runner.flutterPath": ".fvm/flutter_sdk/bin/flutter",
 }

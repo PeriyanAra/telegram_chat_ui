@@ -4,7 +4,7 @@ publish_to: none
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.5 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -12,7 +12,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_bloc: ^8.1.1
   freezed_annotation: ^2.1.0
-  auto_route: ^5.0.0
+  auto_route: ^7.8.4
   data:
     path: ./packages/data
   domain:
@@ -20,7 +20,7 @@ dependencies:
   shared:
     path: ./packages/shared
   rxdart: ^0.27.4
-  mocktail: ^0.3.0
+  mocktail: ^1.0.3
   mockito: ^5.3.0
   bloc_test: ^9.1.0
 
@@ -29,8 +29,8 @@ dev_dependencies:
     sdk: flutter
   analyzer_rules:
       path: ./packages/analyzer_rules
-  flutter_lints: ^2.0.0
-  auto_route_generator: ^5.0.0
+  flutter_lints: ^3.0.1
+  auto_route_generator: ^7.3.2
   build_runner: ^2.2.0
   freezed: ^2.1.0+1
 

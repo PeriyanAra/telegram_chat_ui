@@ -14,7 +14,7 @@ abstract class Client {
     ];
 
     return ChopperClient(
-      baseUrl: 'https://rickandmortyapi.com/api',
+      baseUrl: Uri.parse('https://rickandmortyapi.com/api'),
       converter: JsonSerializableConverter.instance,
       interceptors: interceptors,
     );
