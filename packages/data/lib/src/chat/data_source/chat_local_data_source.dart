@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 
-import 'package:data/src/chat/dto/message_dto.dart';
 import 'package:data/src/database/database_constants.dart';
+import 'package:data/src/chat/dto/message_dto.dart';
 import 'package:domain/domain_layer.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -114,7 +114,7 @@ class ChatLocalDataSource {
   Future<Result<List<MessageDto>, FailureResult>> fetchData() async {
     try {
       final response = await _database.rawQuery(
-        'SELECT * FROM ${DatabaseConstants.chatIdColumnName}',
+        'SELECT * FROM ${DatabaseConstants.chatTableName}',
       );
 
       if (response.isNotEmpty) {
